@@ -1,0 +1,12 @@
+export const White = 0xffffff;
+export const Red = 0xff0000;
+export const Blue = 0x0000ff;
+export const Azure = 0xf0ffff;
+export const Black = 0x000000;
+export const Aquamarine = 0x7fffd4;
+export const Beige = 0xf5f5dc;
+export const Brown = 0xa52a2a;
+export const Aqua = 0x00ffff;
+export const Chocolate = 0xd2691e;
+export const Crimson = 0xdc143c;
+export const Green = 0x00ff00;

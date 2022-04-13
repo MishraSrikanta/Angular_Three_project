@@ -10,3 +10,17 @@ export const Aqua = 0x00ffff;
 export const Chocolate = 0xd2691e;
 export const Crimson = 0xdc143c;
 export const Green = 0x00ff00;
+export const LightBrown = 0xba8c63;
+export const DarkBrown = 0x694522;
+export const LightGrey = 0xD3D3D3;
+export const MetalicGold = 0xD4AF37;
+export const Silver = 0xc0c0c0;
+export const Wood1 = 0xba8c63;
+export const darkSoil = 0x503715;
+export const AshGray = 0xB2BEB5;
+export const Charcol = 0x36454F;
+export const MediumBlue = 0x0000CD;
+export const DodgerBlue = 0x1E90FF;
+export const LightCyan = 0xE0FFFF;
+
+

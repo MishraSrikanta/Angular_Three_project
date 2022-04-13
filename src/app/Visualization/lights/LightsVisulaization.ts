@@ -1,11 +1,11 @@
-import { White } from 'src/app/Constants/ColorConstants';
+import { Blue, DarkBrown, darkSoil, LightBrown, Red, White, Wood1 } from 'src/app/Constants/ColorConstants';
 import * as THREE from 'three'
 import { PointLightPosition } from '../Points/LightsPositions/PointLightPosition';
 
 export class Lights {
   static pointlight1() {
     let color = White;
-    let Intensity = 1;
+    let Intensity = 0.2;
     let distance = 0;
     // You can change the color and intensity here
     const point = PointLightPosition;
@@ -17,7 +17,7 @@ export class Lights {
 
   static pointlight2() {
     let color = White;
-    let Intensity = 1;
+    let Intensity = 0.2;
     let distance = 0;
     // You can change the color and intensity here
     const point = PointLightPosition
@@ -29,7 +29,7 @@ export class Lights {
 
   static pointlight3() {
     let color = White;
-    let Intensity = 1;
+    let Intensity =0.2;
     let distance = 0;
     // You can change the color and intensity here
     const point = PointLightPosition
@@ -38,14 +38,57 @@ export class Lights {
     light1.lookAt(0, 0, 0);
     return light1;
   }
-
-  static ambientlight() {
+  static pointlight4() {
     let color = White;
     let Intensity = 1;
+    let distance = 0;
+    // You can change the color and intensity here
+    const point = PointLightPosition
+    const light1 = new THREE.PointLight(color, Intensity, distance)
+    light1.position.set(point[0].light4.x, point[0].light4.y, point[0].light4.z)
+    light1.lookAt(0, 0, 0);
+    return light1;
+  }
+  static pointlight5() {
+    let color = White;
+    let Intensity = 1;
+    let distance = 0;
+    // You can change the color and intensity here
+    const point = PointLightPosition
+    const light1 = new THREE.PointLight(color, Intensity, distance)
+    light1.position.set(point[0].light5.x, point[0].light5.y, point[0].light5.z)
+    light1.lookAt(0, 0, 0);
+    return light1;
+  }
+
+  static pointlight6() {
+    let color = White;
+    let Intensity = 0.2;
+    let distance = 0;
+    // You can change the color and intensity here
+    const point = PointLightPosition
+    const light1 = new THREE.PointLight(color, Intensity, distance)
+    light1.position.set(point[0].light6.x, point[0].light6.y, point[0].light6.z)
+    light1.lookAt(0, 0, 0);
+    return light1;
+  }
+
+  static ambientlight() {
+    // let color = 0x6c532f;
+    let color = White;
+    let Intensity = 0.8;
     // You can change the color and intensity here
     const light2 = new THREE.AmbientLight(color, Intensity);
     return light2;
   }
+  static directionalLight(){
+    const light = new THREE.DirectionalLight(White, 1);
+    light.position.set(50, 50, 50)
+    
+    return light;
+  }
+
+
   constructor() { }
 
 

@@ -120,7 +120,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     this.scene.add(this.cube);
     this.cube.position.set(-4, 2, 2);
 
-
+    console.log("scene is created");
     //#region Windowshape
     const window1 = WindowShape1.createwindow()
     window1.name = "w1"

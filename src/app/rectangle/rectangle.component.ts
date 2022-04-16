@@ -25,7 +25,7 @@ import { NgControlStatus } from '@angular/forms';
 import { animate } from '@angular/animations';
 import { Cube } from '../Visualization/Helpers/cubeHelper';
 import { AnimationClip, AnimationMixer, Camera, Clock, Scene } from 'three';
-import { texture3 } from '../Visualization/Textures/Texture3';
+import { texture3 } from '../Visualization/Textures/Texture-1';
 import { texture2 } from '../Visualization/Textures/Texture2';
 import { WindowLock1 } from '../Visualization/shapes/WindowLock/WindowLock1';
 import { AnimationClipCreator } from 'three/examples/jsm/animation/AnimationClipCreator'
@@ -46,10 +46,18 @@ import { GlassShape2 } from '../Visualization/shapes/GlassShape2';
 import { max, min } from 'rxjs';
 import { GlassRightSliding } from '../Visualization/shapes/SlidingRightGlass';
 import { Reload } from '../Buttons/ReloadFunction';
-import { texture4 } from '../Visualization/Textures/Texture4';
-import { texture5 } from '../Visualization/Textures/Texture5';
-import { texture7 } from '../Visualization/Textures/Texture7';
-import { texture6 } from '../Visualization/Textures/Texture6';
+// import{CSS2DObject, CSS2DRenderer} from 'three/examples/jsm/renderers/CSS2DRenderer'
+ import { WindowCorner1 } from '../Visualization/shapes/Window/WindowCorner1';
+import { texture9 } from '../Visualization/Textures/Texture-7';
+import { texture10 } from '../Visualization/Textures/Texture-8';
+import { texture11 } from '../Visualization/Textures/Texture-9';
+import { texture12 } from '../Visualization/Textures/Texture-10';
+import { PracticeWindowShape1 } from '../Visualization/shapes/Window/PracticeShape1';
+import { texture4 } from '../Visualization/Textures/Texture-2';
+import { texture5 } from '../Visualization/Textures/Texture-3';
+import { texture6 } from '../Visualization/Textures/Texture-4';
+import { texture7 } from '../Visualization/Textures/Texture-5';
+import { texture8 } from '../Visualization/Textures/Texture-6';
 // import {DragControls} from '../../../node_modules/three/examples/jsm/controls'
 
 
@@ -107,7 +115,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
 
   //#region Practice with cube for reference
   private loader = new THREE.TextureLoader();
-  private geometry = new THREE.BoxGeometry(2, 2, 2);
+  private geometry = new THREE.BoxGeometry(5, 12, 1);
   private material = new THREE.MeshBasicMaterial({ map: this.loader.load(this.texture) });
   private cube = new THREE.Mesh(this.geometry, this.material);
 
@@ -117,14 +125,70 @@ export class RectangleComponent implements OnInit, AfterViewInit {
   private createScene() {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(LightCyan)
-    this.scene.add(this.cube);
+
+    //Adding cube for Referance
+    // this.scene.add(this.cube);
     this.cube.position.set(-4, 2, 2);
 
+    console.log("scene is created");
 
     //#region Windowshape
     const window1 = WindowShape1.createwindow()
     window1.name = "w1"
     this.scene.add(window1)
+
+    const pracwindow = PracticeWindowShape1.createwindow();
+    this.scene.add(pracwindow);
+    pracwindow.name = "PW1"
+    pracwindow.position.set(-15, 10, 0)
+
+    //#region Corner Parts
+    const corner1 = WindowCorner1.createwindow();
+    corner1.name = "CR1"
+    this.scene.add(corner1);
+
+    var corner2 = WindowCorner1.createwindow();
+    corner2.name = "CR2"
+    this.scene.add(corner2)
+    corner2.position.set(1, -2, -1)
+    corner2.rotateZ(Math.PI)
+
+    var corner3 = WindowCorner1.createwindow();
+    corner3.name = "CR3"
+    corner3.position.set(0, 14, 0)
+    this.scene.add(corner3)
+    corner3.rotation.x = Math.PI
+
+    var corner4 = WindowCorner1.createwindow();
+    corner4.name = "CR4"
+    corner4.position.set(1, 15, 0)
+    this.scene.add(corner4)
+    corner4.rotation.y = Math.PI
+
+    var corner5 = WindowCorner1.createwindow();
+    corner5.name = "CR5"
+    corner5.position.set(10, -2, 0)
+    this.scene.add(corner5)
+    corner5.rotation.x = Math.PI
+
+    var corner6 = WindowCorner1.createwindow();
+    corner6.name = "CR6"
+    corner6.position.set(11, -1, 0)
+    this.scene.add(corner6)
+    corner6.rotation.y = Math.PI
+
+    var corner7 = WindowCorner1.createwindow();
+    corner7.name = "CR7"
+    corner7.position.set(10, 15, -1)
+    this.scene.add(corner7)
+
+
+    var corner8 = WindowCorner1.createwindow();
+    corner8.name = "CR8"
+    corner8.position.set(11, 14, -1)
+    this.scene.add(corner8)
+    corner8.rotation.z = Math.PI
+    //#endregion
 
     const window2 = WindowShape2.createwindow()
     window2.name = "w2"
@@ -330,7 +394,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     //#endregion
 
     //#endregion
-
 
     //#region practices
 
@@ -977,38 +1040,38 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     //#endregion
 
     //#region Adding Text to the Scene with Delete and text Buttons
-    const loader = new FontLoader();
-    loader.load('../assets/Teko.json', (font) => {
-      const geometry = new TextGeometry('This is a Window', {
-        font: font,
-        size: 2,
-        height: 0.5
-        // curveSegments: 12,
-        // bevelEnabled: true,
-        // bevelThickness: 10,
-        // bevelSize: 8,
-        // bevelOffset: 0,
-        // bevelSegments: 5
-      })
-      const material = new THREE.MeshStandardMaterial({ color: Black })
-      const text = new THREE.Mesh(geometry, material);
-      text.position.set(-1.5, -5, 0)
-      // return mesh;
-      this.scene.add(text);
+    // const loader = new FontLoader();
+    // loader.load('../assets/Teko.json', (font) => {
+    //   const geometry = new TextGeometry('This is a Window', {
+    //     font: font,
+    //     size: 2,
+    //     height: 0.5
+    //     // curveSegments: 12,
+    //     // bevelEnabled: true,
+    //     // bevelThickness: 10,
+    //     // bevelSize: 8,
+    //     // bevelOffset: 0,
+    //     // bevelSegments: 5
+    //   })
+    //   const material = new THREE.MeshStandardMaterial({ color: Black })
+    //   const text = new THREE.Mesh(geometry, material);
+    //   text.position.set(-1.5, -5, 0)
+    //   // return mesh;
+    //   this.scene.add(text);
 
-      var deleteText = document.getElementById("btn1");
-      deleteText?.addEventListener('click', event => {
-        console.log("del is clicked");
-        this.scene.remove(text)
+    //   var deleteText = document.getElementById("btn1");
+    //   deleteText?.addEventListener('click', event => {
+    //     console.log("del is clicked");
+    //     this.scene.remove(text)
 
-      })
-      var ImportText = document.getElementById("btn2")
-      ImportText?.addEventListener('click', event => {
-        console.log("Import is clicked");
-        this.scene.add(text);
+    //   })
+    //   var ImportText = document.getElementById("btn2")
+    //   ImportText?.addEventListener('click', event => {
+    //     console.log("Import is clicked");
+    //     this.scene.add(text);
 
-      })
-    })
+    //   })
+    // })
     //#endregion
 
     //#region Raycaster
@@ -1034,7 +1097,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
       }
 
       window.addEventListener('pointermove', onPointerMove);
-      const myobject: THREE.Mesh[] = [framesashleft, framesashleft2, framesashbot, framesashbot1, framesashright, framesashright2, framesashtop, framesashtop1, window1, window2, window3, window4, windowGlassBottom, windowGlasstop, windowtop1, windowtop2, windowtop3, windowtop5, windowtop6, windowtop7, windowtop8,];
+      const myobject: THREE.Mesh[] = [corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8, framesashleft, framesashleft2, framesashbot, framesashbot1, framesashright, framesashright2, framesashtop, framesashtop1, window1, window2, window3, window4, windowGlassBottom, windowGlasstop, windowtop1, windowtop2, windowtop3, windowtop5, windowtop6, windowtop7, windowtop8,];
       window.addEventListener('pointermove', ev => {
         const intersects = raycaster.intersectObjects(myobject, true);
         raycaster.setFromCamera(pointer, this.camera);
@@ -1055,29 +1118,45 @@ export class RectangleComponent implements OnInit, AfterViewInit {
               console.log("Window1 is clicking")
               window1.material.color.set(MediumBlue)
               windowtop1.material.color.set(MediumBlue)
+              corner1.material.color.set(MediumBlue)
+              corner3.material.color.set(MediumBlue)
             } else {
               window1.material.color.set(White);
               windowtop1.material.color.set(White);
+              corner1.material.color.set(White)
+              corner3.material.color.set(White)
             }
             if (intersects[0].object.position == window3.position || intersects[0].object.position == windowtop2.position) {
               console.log("Window3 is clicking")
               window3.material.color.set(MediumBlue)
               windowtop2.material.color.set(MediumBlue)
+              corner6.material.color.set(MediumBlue)
+              corner8.material.color.set(MediumBlue)
             } else {
               window3.material.color.set(White)
               windowtop2.material.color.set(White)
+              corner6.material.color.set(White)
+              corner8.material.color.set(White)
             }
             if (intersects[0].object.position == window4.position) {
               console.log("Window4 is clicking")
               window4.material.color.set(MediumBlue)
+              corner5.material.color.set(MediumBlue)
+              corner2.material.color.set(MediumBlue)
             } else {
               window4.material.color.set(White)
+              corner5.material.color.set(White)
+              corner2.material.color.set(White)
             }
             if (intersects[0].object.position == windowtop3.position) {
               console.log("WindowTop3 is clicking")
               windowtop3.material.color.set(MediumBlue)
+              corner4.material.color.set(MediumBlue)
+              corner7.material.color.set(MediumBlue)
             } else {
               windowtop3.material.color.set(White)
+              corner4.material.color.set(White)
+              corner7.material.color.set(White)
             }
             if (intersects[0].object.position == window2.position) {
               console.log("Window2 is clicking")
@@ -1454,6 +1533,8 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     }
 
     //#endregion
+
+
 
     //#region Camera
     let aspectRatio = this.getAspectRatio()
@@ -1933,6 +2014,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
   private startRenderingLoop() {
 
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
+
     this.renderer.setPixelRatio(devicePixelRatio);
     this.renderer.outputEncoding = THREE.sRGBEncoding;
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
@@ -1940,6 +2022,22 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // const times = [2, 10];
     // const axis = "x";
     // let tweens = this.tween();
+    
+
+
+    // const labelRenderer = new CSS2DRenderer()
+    // labelRenderer.setSize(window.innerWidth, window.innerHeight)
+    // labelRenderer.domElement.style.position = 'absolute'
+    // labelRenderer.domElement.style.top = '0px'
+    // labelRenderer.domElement.style.pointerEvents = 'none'
+    // document.body.appendChild(labelRenderer.domElement)
+    
+
+
+ 
+
+
+
     this.camera.updateProjectionMatrix();
     // let loopnew = this.loop();
     // document.body.appendChild(this.renderer.domElement)
@@ -1970,8 +2068,11 @@ export class RectangleComponent implements OnInit, AfterViewInit {
 
 
       component.renderer.render(component.scene, component.camera);
-
+      
     }());
+
+
+  
 
     //#region 2D , 3D buttons and Sliding button
     var ThreeDim = document.getElementById("threeDimension")
@@ -1983,13 +2084,36 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var TwoDim = document.getElementById("twoDimension")
     TwoDim?.addEventListener('click', event => {
       console.log("2D Active");
-      this.camera.position.set(500, 200, 400)
+      this.camera.position.set(0, 0, 300)
       // control.dispose();
       control.enableRotate = false;
     })
     //#endregion
+// let ctrlDown = false;
+// let line : THREE.Line;
+// let drawline = false;
+// const measurementLabels: { [key: number]: CSS2DObject } = {}
+//     window.addEventListener('keydown', event => {
+//       if(event.key ==='control'){
+//         ctrlDown = true;
+//         control.enabled = false;
+//         this.renderer.domElement.style.cursor = 'crosshair'
+//       }
+//     })
+//     window.addEventListener('keyup', event=> {
+//       if(event.key === 'control'){
+//         control.enabled = true;
+//         this.renderer.domElement.style.cursor = 'pointer';
+//         if(drawline){
+//           this.scene.remove(line);
+//           // this.scene.remove(measurementLabels[lineId])
+//           drawline = false;
+//         }
+//       }
+//     })
+  
 
-  }
+}
 
 
   ngAfterViewInit(): void {
@@ -2009,6 +2133,8 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     alert("Hello");
   }
 
+
+ 
   //#region Textures
   Textures1() {
     var w1 = this.scene.getObjectByName("w1")
@@ -2018,7 +2144,20 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7]
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var cube = this.cube;
+    var pw = this.scene.getObjectByName("PW1")
+
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, cube, pw]
 
     objectscene.forEach(object => {
       object.material = texture3.loader();
@@ -2036,7 +2175,19 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7]
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8,pw]
 
     objectscene.forEach(object => {
       object.material = texture4.loader();
@@ -2053,7 +2204,18 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7]
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
 
     objectscene.forEach(object => {
       object.material = texture5.loader();
@@ -2070,7 +2232,18 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7]
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
 
     objectscene.forEach(object => {
       object.material = texture6.loader();
@@ -2087,12 +2260,190 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7]
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
 
     objectscene.forEach(object => {
       object.material = texture7.loader();
     })
     console.log("Tex-5 clicked")
+
+  }
+
+  Textures6() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture8.loader();
+    })
+    console.log("Tex-6 clicked")
+
+  }
+
+  Textures7() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture9.loader();
+    })
+    console.log("Tex-6 clicked")
+
+  }
+
+  Textures8() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture10.loader();
+    })
+    console.log("Tex-6 clicked")
+
+  }
+
+  Textures9() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture11.loader();
+    })
+    console.log("Tex-6 clicked")
+
+  }
+
+  Textures10() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture12.loader();
+    })
+    console.log("Tex-6 clicked")
+
+  }
+  TexturesOff() {
+    var w1 = this.scene.getObjectByName("w1")
+    var w2 = this.scene.getObjectByName("w2")
+    var w3 = this.scene.getObjectByName("w3")
+    var w4 = this.scene.getObjectByName("w4")
+    var w5 = this.scene.getObjectByName("WT1")
+    var w6 = this.scene.getObjectByName("WT2")
+    var w7 = this.scene.getObjectByName("WT3")
+
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+
+    var pw = this.scene.getObjectByName("PW1")
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
+
+    objectscene.forEach(object => {
+      object.material = texture.loader();
+    })
+    console.log("Tex-6 clicked")
 
   }
   //#endregion
@@ -2107,7 +2458,15 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7];
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8];
     objectscene.forEach(object => {
       object.material.color.set(White)
     })
@@ -2121,7 +2480,15 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
     var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7];
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8];
     objectscene.forEach(object => {
       object.material.color.set(LightBrown)
     })
@@ -2134,8 +2501,16 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     var w4 = this.scene.getObjectByName("w4")
     var w5 = this.scene.getObjectByName("WT1")
     var w6 = this.scene.getObjectByName("WT2")
-    var w7 = this.scene.getObjectByName("WT3")
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7];
+    var w7 = this.scene.getObjectByName("WT3");
+    var cor1 = this.scene.getObjectByName("CR1");
+    var cor2 = this.scene.getObjectByName("CR2");
+    var cor3 = this.scene.getObjectByName("CR3");
+    var cor4 = this.scene.getObjectByName("CR4");
+    var cor5 = this.scene.getObjectByName("CR5");
+    var cor6 = this.scene.getObjectByName("CR6");
+    var cor7 = this.scene.getObjectByName("CR7");
+    var cor8 = this.scene.getObjectByName("CR8");
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8];
     objectscene.forEach(object => {
       object.material.color.set(DarkBrown)
     })

@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { TShapePoints } from "../../Points/Shapes/Tshape";
 import { texture } from "../../Textures/Texture1";
 import { texture2 } from "../../Textures/Texture2";
-import { texture3 } from "../../Textures/Texture3";
+import { texture3 } from "../../Textures/Texture-1";
 export class WindowShapeTop6New{
     constructor() { }
     static createwindow() {

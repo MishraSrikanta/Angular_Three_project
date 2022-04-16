@@ -1,5 +1,6 @@
-import { texture3 } from "src/app/Visualization/Textures/Texture3";
-import { texture4 } from "src/app/Visualization/Textures/Texture4";
+import { textureFrame } from "src/app/Visualization/Textures/FameTexture";
+import { texture3 } from "src/app/Visualization/Textures/Texture-1";
+import { texture4 } from "src/app/Visualization/Textures/Texture-2";
 import * as THREE from "three";
 import { texture } from "../../../Textures/Texture1";
 
@@ -50,7 +51,7 @@ export class WindowSashLeft{
             extrudePath: path1
         };
 
-        const material = texture4.loader();
+        const material = textureFrame.loader();
         const geometry1 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings1);
         const mesh1 = new THREE.Mesh(geometry1, material);
         mesh1.position.set(1.3, -0.7, -0.4)

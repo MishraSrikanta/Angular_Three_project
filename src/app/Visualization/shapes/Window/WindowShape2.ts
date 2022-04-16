@@ -26,7 +26,7 @@ export class WindowShape2{
         //#endregion
     
         var point1 = new THREE.Vector3(0, 0, 0);
-        var point2 = new THREE.Vector3(0, 0, 10);
+        var point2 = new THREE.Vector3(0, 0, 9);
         var path1 = new THREE.LineCurve3(point1, point2)
         var extrudeSettings1 = {
             bevelEnabled: false,

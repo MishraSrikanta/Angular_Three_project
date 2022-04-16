@@ -26,7 +26,7 @@ export class WindowShape4{
         //#endregion
     
         var point1 = new THREE.Vector3(0, 0, 0);
-        var point2 = new THREE.Vector3(0, 0, 11);
+        var point2 = new THREE.Vector3(0, 0, 9);
         var path1 = new THREE.LineCurve3(point1, point2)
         var extrudeSettings1 = {
             bevelEnabled: false,
@@ -37,7 +37,7 @@ export class WindowShape4{
         const material = texture2.loader();
         const geometry1 = new THREE.ExtrudeBufferGeometry(shape, extrudeSettings1);
         const mesh1 = new THREE.Mesh(geometry1, material);
-        mesh1.position.set(11, -1, -1)
+        mesh1.position.set(10, -1, -1)
         mesh1.rotation.y = - Math.PI /2
         return mesh1;
 

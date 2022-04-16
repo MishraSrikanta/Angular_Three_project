@@ -21,7 +21,7 @@ export class texture2 {
         // var bumpTexture = loader.load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJKAwUFmxfn6w0QEzLYwwZPrZjF9ZyJ4sf5MHrOu3uTNQAzFEK8KCxcaZgS0BcxWFShB0&usqp=CAU",
         //#endregion
 
-        var bumpTexture = loader.load('../assets/Texture/BumpTexture/WoodTexture3.jpg',
+        var bumpTexture = loader.load('../assets/Texture/BumpTexture/WoodTexture14.jpg',
             function (tex) {
                 tex.wrapS = THREE.MirroredRepeatWrapping; // THREE.RepeatWrapping, THREE.ClampToEdgeWrapping(Wrappd Horizontally)
                 tex.wrapT = THREE.MirroredRepeatWrapping; // THREE.RepeatWrapping, THREE.ClampToEdgeWrapping(Wrappd Vertically)
@@ -39,7 +39,7 @@ export class texture2 {
         // var normalTexture = loader.load('https://www.filterforge.com/filters/5745-normal.jpg',
         //#endregion
 
-        var normalTexture = loader.load('../assets/Texture/NormalTexture/WoodNormalTexture6.jpg',
+        var normalTexture = loader.load('../assets/Texture/NormalTexture/WoodNormalTexture14.jpg',
             function (tex) {
                 tex.wrapS = THREE.MirroredRepeatWrapping;
                 tex.wrapT = THREE.MirroredRepeatWrapping;
@@ -47,20 +47,20 @@ export class texture2 {
                 tex.anisotropy = 20;
                 tex.needsUpdate = true;
             });
-        const texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic3.jpg');
+        // const texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic14.jpg');
 
         const material = new THREE.MeshStandardMaterial({
             //  color: DarkBrown,
             color: White,
             wireframe: false,
-            // roughness: 0.5,
-            metalness: 0.1,
+            roughness: 0.5,
+            // metalness: 0.5,
             // opacity: 0.2,
             // transparent: true
 
-            map: null
+            // map: null
             // side: THREE.DoubleSide,
-            // map: new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic1.jpg')
+            // map: new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic15.jpg')
         });
         // material.map = texture;
         // material.bumpMap = bumpTexture;

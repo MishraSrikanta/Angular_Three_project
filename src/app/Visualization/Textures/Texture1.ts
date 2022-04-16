@@ -26,7 +26,7 @@ export class texture {
             // var normaltexture = loader.load('https://i.pinimg.com/originals/60/37/96/603796cef1e18a412c5f8447e95b6fe9.jpg')
         const material = new THREE.MeshStandardMaterial({
             //  color: DarkBrown,
-            color: 0x404040,
+            color: White,
             wireframe: false,
             // roughness: 0.5,
             // metalness: 0.5,

@@ -1,6 +1,6 @@
 import { Aqua, Brown, Brown2, LightBrown, LightBrown2, Red, Walnut, White, Wood1 } from "src/app/Constants/ColorConstants";
 import * as THREE from "three";
-import { Loader } from "three";
+
 import { texture } from "./Texture1";
 
 export class texture8 {
@@ -47,10 +47,10 @@ export class texture8 {
 
         material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.offset.set(0, 0.5);
-        texture.repeat.set(0.05, 0.05);
+        texture.offset.set(0, 0.9);
+        texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
-        texture.needsUpdate = true;
+        // texture.needsUpdate = true;
         // material.map = texture;
         // material.bumpMap = bumpTexture;
         // material.normalMap = normalTexture;

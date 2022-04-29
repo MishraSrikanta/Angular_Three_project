@@ -40,10 +40,10 @@ export class texture4 {
 
         material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.offset.set(0, 0.5);
+        texture.offset.set(0, 0.9);
         texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
-        texture.needsUpdate = true;
+        // texture.needsUpdate = true;
         // const newcolor = new Color(0xba8c63)
         // newcolor.convertSRGBToLinear();
         // material.color.set(newcolor)

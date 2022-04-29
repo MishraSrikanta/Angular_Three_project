@@ -1,6 +1,6 @@
 import { Aqua, DarkBrown2, darkSoil, LightBrown, Red, Walnut, White, Wood1 } from "src/app/Constants/ColorConstants";
 import * as THREE from "three";
-import { Loader } from "three";
+
 import { texture } from "./Texture1";
 
 export class texture9 {
@@ -67,9 +67,9 @@ export class texture9 {
         texture.offset.set(0, 0.9);
         texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
-        texture.needsUpdate = true
+        // texture.needsUpdate = true;
         // material.map = texture;
-        material.bumpMap = bumpTexture;
+        // material.bumpMap = bumpTexture;
         // material.normalMap = normalTexture;
         // material.normalScale.set(50, 50)
         return material;

@@ -6,19 +6,22 @@ export const WindowPoints = [
         gender: 'Male',
         sibblings: [
             {
-                gender: 'fe',
+                name: "hello",
+                gender: 'B',
                 age: 20,
                 height: 4,
 
             },
             {
-                gender: 'fe',
+                name: "hii",
+                gender: 'C',
                 age: 24,
                 height: 5.2,
 
             },
             {
-                gender: 'fe',
+                name: "Bye",
+                gender: 'D',
                 age: 20,
                 height: 5,
 
@@ -27,7 +30,7 @@ export const WindowPoints = [
     },
     {
         name: 'B',
-        age: 18,
+        age: 20,
         gender: 'Male',
         sibblings: [
             {

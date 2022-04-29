@@ -5,7 +5,7 @@ import { DragControls } from 'three/examples/jsm/controls/DragControls'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { Lights } from '../Visualization/lights/LightsVisulaization';
-import { Aqua, Black, Blue, Charcol, DarkBrown, darkSoil, LightBrown, LightCyan, MediumBlue, Red, White, Wood1 } from '../Constants/ColorConstants';
+import { Aqua, Black, Blue, Charcol, DarkBrown, DarkBrown2, darkSoil, LightBrown, LightCyan, MediumBlue, Red, Walnut, White, Wood1 } from '../Constants/ColorConstants';
 import { WindowShape1 } from '../Visualization/shapes/Window/Windowshape1';
 import { WindowShape2 } from '../Visualization/shapes/Window/WindowShape2';
 import { WindowShape3 } from '../Visualization/shapes/Window/WindowShape3';
@@ -24,7 +24,7 @@ import { Container } from '@angular/compiler/src/i18n/i18n_ast';
 import { NgControlStatus } from '@angular/forms';
 import { animate } from '@angular/animations';
 import { Cube } from '../Visualization/Helpers/cubeHelper';
-import { AnimationClip, AnimationMixer, Camera, Clock, Scene } from 'three';
+import { AnimationClip, AnimationMixer, Camera, Clock, Points, Scene } from 'three';
 import { texture3 } from '../Visualization/Textures/Texture-1';
 import { texture2 } from '../Visualization/Textures/Texture2';
 import { WindowLock1 } from '../Visualization/shapes/WindowLock/WindowLock1';
@@ -43,11 +43,11 @@ import { WindowFrameTop } from '../Visualization/shapes/Window/Window Frame/Fram
 import { WindowSashSide } from '../Visualization/shapes/Window/Window Sash/FrameSash1';
 import { WindowSashTop } from '../Visualization/shapes/Window/Window Sash/FrameSash2';
 import { GlassShape2 } from '../Visualization/shapes/GlassShape2';
-import { max, min } from 'rxjs';
+import { elementAt, max, min } from 'rxjs';
 import { GlassRightSliding } from '../Visualization/shapes/SlidingRightGlass';
 import { Reload } from '../Buttons/ReloadFunction';
 // import{CSS2DObject, CSS2DRenderer} from 'three/examples/jsm/renderers/CSS2DRenderer'
- import { WindowCorner1 } from '../Visualization/shapes/Window/WindowCorner1';
+import { WindowCorner1 } from '../Visualization/shapes/Window/WindowCorner1';
 import { texture9 } from '../Visualization/Textures/Texture-7';
 import { texture10 } from '../Visualization/Textures/Texture-8';
 import { texture11 } from '../Visualization/Textures/Texture-9';
@@ -58,6 +58,9 @@ import { texture5 } from '../Visualization/Textures/Texture-3';
 import { texture6 } from '../Visualization/Textures/Texture-4';
 import { texture7 } from '../Visualization/Textures/Texture-5';
 import { texture8 } from '../Visualization/Textures/Texture-6';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
+import { WindowPoints } from '../Visualization/Points/Points';
+import { WindowPoints1 } from '../Visualization/Points/Points1';
 // import {DragControls} from '../../../node_modules/three/examples/jsm/controls'
 
 
@@ -328,13 +331,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     framesashbot.position.set(5.8, -0.7, -0.4)
     framesashbot.rotation.y = -Math.PI / 2
     framesashbot.rotation.z = Math.PI / 2
-
-
-
-
-
-
-
 
 
     const framesashleft2 = WindowSashSide.createFrame();
@@ -824,7 +820,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // const arr2 = WindowPoints1;
     // console.log(arr2.length)
     // console.log(array1.length)
-
     // //#region Array.find Methode
 
     // Object.assign(array1.find(ele => ele.age === 20), {
@@ -841,7 +836,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // })
     // //#endregion
 
-    // //#region Different loop Methods
+
 
     // let newage = array1.filter(ele => ele.age === 20);
     // Object.assign(array1.filter(ele => ele.age === 20), {
@@ -862,7 +857,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // });
 
 
-    // //Changing Multiple values in a loop(for same properties)
+    // Changing Multiple values in a loop(for same properties)
     // array1.forEach(ele => {
     //   if (ele.age === 20) {
     //     ele.name = "Rimun"
@@ -878,32 +873,104 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // //Filtering the values
     // let newarr1 = array1.filter(ele => ele.age === 21);
     // console.log(newarr1);
+
+    // var data = WindowPoints;
+    // data.find(ele=> ele.sibblings?.find(el => el.age === 20),{
+    //   name : "Srikanta",
+    //   age: 25
+    // });
+    // console.log( data.find(ele=> ele.sibblings?.find(el => el.age == 20),{
+    //   name : "Srikanta",
+    //   age: 25
+    // }));
+
     //#endregion
 
     //#region Changing one value in an object
 
-    // const arr = [
-    //   {
-    //     id: 101,
-    //     name: 'Jone',
-    //     age: 1
-    //   },
-    //   {
-    //     id: 102,
-    //     name: 'Jane',
-    //     age: 2
-    //   },
-    //   {
-    //     id: 103,
-    //     name: 'johnny',
-    //     age: 3
-    //   },
-    //   {
-    //     id: 104,
-    //     name: 'sara',
-    //     age: 3
+    // Very Very Important[] is used to add a new properties in the object in an array.
+    var arr: any[] = [
+      {
+        id: 101,
+        name: 'Jone',
+        age: 1,
+        salary: [{
+          name: "situ",
+          monthly: 10000,
+          yearly: 2
+        }]
+      },
+      {
+        id: 102,
+        name: 'Jane',
+        age: 2,
+        salary: [{
+          name: "simun",
+          monthly: 30000,
+          yearly: 1
+        }]
+      },
+      {
+        id: 103,
+        name: 'johnny',
+        age: 3,
+        salary: [{
+          name: "rimun",
+          monthly: 20000,
+          yearly: 2
+        }]
+      },
+      {
+        id: 104,
+        name: 'sara',
+        age: 3,
+        salary: [{
+          name: "Sri",
+          monthly: 10000,
+          yearly: 3
+        }]
+      }
+    ];
+
+    var data = WindowPoints;
+    data.forEach(el => {
+      if (el.age == 20) {
+        el.name = "Srikanta";
+      }
+
+    })
+
+
+    console.log(data)
+
+
+    //region To add a Property in the Object in an array(Very important) makes sure that the type of the array is "any[]"
+    // arr.forEach((element) => {
+    //   element.b = "hlo"
+    // })
+    // console.log(arr)
+    //endregion
+
+    // arr.forEach(el => {
+    //   if (el.age === 2) {
+    //     el.name = " Sriman";
     //   }
-    // ];
+    // })
+    // arr.forEach(el => {
+    //   if (el.salary[0].yearly === 2) {
+    //     console.log(arr.find(ele => ele.salary[0].yearly === 2))
+    //     el.salary[0].total = 10;
+    //   }
+    // })
+    // arr.forEach(el => {
+    //   if (el.salary[0].yearly === 2) {
+    //     el.salary[0].name = "Srikanta";
+    //   }
+    // })
+
+    // console.log(arr);
+
+    // console.log(arr)
 
     // //Don't do in this way
     // // console.log(arr);
@@ -923,7 +990,37 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // found.name = 'Remo';
     // found.age = 54;
     // console.log(arr)
+
+
     //#endregion
+
+    //#region Using For loop For Inceremnting Values
+    // var clickCount = 0;
+    // for (var i = 0; i < 1; i++) {
+
+    //   if (i == 0) {
+    //     console.log("Hey its ClickCount", clickCount)
+    //     clickCount += 1;
+    //   }
+    //   if (i == 1) {
+    //     console.log("1")
+    //     clickCount += 1;
+    //   }
+
+    //   if (i == 2) {
+    //     console.log("2")
+    //     clickCount += 1;
+    //   }
+
+    //   if (i == 3) {
+    //     console.log("3")
+    //     clickCount += 1;
+    //   }
+
+    // }
+
+    //#endregion
+
 
     //#endregion
 
@@ -931,36 +1028,36 @@ export class RectangleComponent implements OnInit, AfterViewInit {
 
     //#region  side lines
     let drawline1 = Line1.createline();
-    drawline1.position.set(-0.02, 0, 0.02)
+    drawline1.position.set(-0.02, 0, 0.02);
     this.scene.add(drawline1);
 
     let drawline2 = Line1.createline();
-    drawline2.position.set(-0.02, 0, -1.02)
+    drawline2.position.set(-0.02, 0, -1.02);
     this.scene.add(drawline2);
 
     let drawline3 = Line1.createline();
-    drawline3.position.set(11.02, 0, 0.02)
+    drawline3.position.set(11.02, 0, 0.02);
     this.scene.add(drawline3);
 
     let drawline4 = Line1.createline();
-    drawline4.position.set(11.02, 0, -1.02)
+    drawline4.position.set(11.02, 0, -1.02);
     this.scene.add(drawline4);
 
 
     let sideinner1 = Line3.createline();
-    sideinner1.position.set(1.02, 0, 0.02)
+    sideinner1.position.set(1.02, 0, 0.02);
     this.scene.add(sideinner1);
 
     let sideinner2 = Line3.createline();
-    sideinner2.position.set(1.02, 0, -1.02)
+    sideinner2.position.set(1.02, 0, -1.02);
     this.scene.add(sideinner2);
 
     let sideinner3 = Line3.createline();
-    sideinner3.position.set(9.98, 0, 0.02)
+    sideinner3.position.set(9.98, 0, 0.02);
     this.scene.add(sideinner3);
 
     let sideinner4 = Line3.createline();
-    sideinner4.position.set(9.98, 0, -1.02)
+    sideinner4.position.set(9.98, 0, -1.02);
     this.scene.add(sideinner4);
     //#endregion
 
@@ -1097,6 +1194,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
       }
 
       window.addEventListener('pointermove', onPointerMove);
+      const myobject2: any[] = [drawline1, drawline2, drawline3, drawline4];
       const myobject: THREE.Mesh[] = [corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8, framesashleft, framesashleft2, framesashbot, framesashbot1, framesashright, framesashright2, framesashtop, framesashtop1, window1, window2, window3, window4, windowGlassBottom, windowGlasstop, windowtop1, windowtop2, windowtop3, windowtop5, windowtop6, windowtop7, windowtop8,];
       window.addEventListener('pointermove', ev => {
         const intersects = raycaster.intersectObjects(myobject, true);
@@ -1105,64 +1203,250 @@ export class RectangleComponent implements OnInit, AfterViewInit {
         n.copy(intersects[0].object.position);
         n.transformDirection(intersects[0].object.matrixWorld)
         arrowHelper.setDirection(n);
-        arrowHelper.position.copy(intersects[0].point)
+        arrowHelper.position.copy(intersects[0].point);
 
+        //#region Double click events
+        // window.addEventListener('dblclick', event => {
+        //   if (intersects.length > 0) {
+        //     console.log("pointer is moved")
+        //     // intersects[0].object.addEventListener('dbclick', ev => {
+        //     //   // this.material.color.set(Black)
+        //     //   console.log("Double Clicked")
+        //     if (intersects[0].object.position == window1.position || intersects[0].object.position == windowtop1.position) {
+        //       console.log("Window1 is clicking")
+        //       window1.material.color.set(MediumBlue)
+        //       windowtop1.material.color.set(MediumBlue)
+        //       corner1.material.color.set(MediumBlue)
+        //       corner3.material.color.set(MediumBlue)
+        //     } else {
+        //       window1.material.color.set(White);
+        //       windowtop1.material.color.set(White);
+        //       corner1.material.color.set(White)
+        //       corner3.material.color.set(White)
+        //     }
+        //     if (intersects[0].object.position == window3.position || intersects[0].object.position == windowtop2.position) {
+        //       console.log("Window3 is clicking")
+        //       window3.material.color.set(MediumBlue)
+        //       windowtop2.material.color.set(MediumBlue)
+        //       corner6.material.color.set(MediumBlue)
+        //       corner8.material.color.set(MediumBlue)
+        //     } else {
+        //       window3.material.color.set(White)
+        //       windowtop2.material.color.set(White)
+        //       corner6.material.color.set(White)
+        //       corner8.material.color.set(White)
+        //     }
+        //     if (intersects[0].object.position == window4.position) {
+        //       console.log("Window4 is clicking")
+        //       window4.material.color.set(MediumBlue)
+        //       corner5.material.color.set(MediumBlue)
+        //       corner2.material.color.set(MediumBlue)
+        //     } else {
+        //       window4.material.color.set(White)
+        //       corner5.material.color.set(White)
+        //       corner2.material.color.set(White)
+        //     }
+        //     if (intersects[0].object.position == windowtop3.position) {
+        //       console.log("WindowTop3 is clicking")
+        //       windowtop3.material.color.set(MediumBlue)
+        //       corner4.material.color.set(MediumBlue)
+        //       corner7.material.color.set(MediumBlue)
+        //     } else {
+        //       windowtop3.material.color.set(White)
+        //       corner4.material.color.set(White)
+        //       corner7.material.color.set(White)
+        //     }
+        //     if (intersects[0].object.position == window2.position) {
+        //       console.log("Window2 is clicking")
+        //       window2.material.color.set(MediumBlue)
+        //     } else {
+        //       window2.material.color.set(White)
+        //     }
+        //     if (intersects[0].object.position == framesashleft.position || intersects[0].object.position == framesashbot.position || intersects[0].object.position == framesashtop.position || intersects[0].object.position == framesashright.position) {
+        //       console.log("frame left selected")
+        //       framesashleft.material.color.set(Blue);
+        //       framesashright.material.color.set(Blue);
+        //       framesashtop.material.color.set(Blue);
+        //       framesashbot.material.color.set(Blue);
 
-        window.addEventListener('dblclick', event => {
+        //     } else {
+        //       framesashleft.material.color.set(White);
+        //       framesashright.material.color.set(White);
+        //       framesashtop.material.color.set(White);
+        //       framesashbot.material.color.set(White);
+        //     }
+        //     if (intersects[0].object.position == framesashleft2.position || intersects[0].object.position == framesashbot1.position || intersects[0].object.position == framesashtop1.position || intersects[0].object.position == framesashright2.position) {
+        //       console.log("frame left selected")
+        //       framesashleft2.material.color.set(Blue);
+        //       framesashright2.material.color.set(Blue);
+        //       framesashtop1.material.color.set(Blue);
+        //       framesashbot1.material.color.set(Blue);
+        //     } else {
+        //       framesashleft2.material.color.set(White);
+        //       framesashright2.material.color.set(White);
+        //       framesashtop1.material.color.set(White);
+        //       framesashbot1.material.color.set(White);
+        //     }
+        //   }
+        // })
+        //#endregion
+
+        //#region Click UPscale Effect
+        window.addEventListener('click', event => {
           if (intersects.length > 0) {
             console.log("pointer is moved")
             // intersects[0].object.addEventListener('dbclick', ev => {
             //   // this.material.color.set(Black)
             //   console.log("Double Clicked")
-            if (intersects[0].object.position == window1.position || intersects[0].object.position == windowtop1.position) {
+            if (intersects[0].object.position === window1.position || intersects[0].object.position === windowtop1.position) {
               console.log("Window1 is clicking")
-              window1.material.color.set(MediumBlue)
-              windowtop1.material.color.set(MediumBlue)
-              corner1.material.color.set(MediumBlue)
-              corner3.material.color.set(MediumBlue)
+
+              window1.material.emissive.set(0x6060f)
+              windowtop1.material.emissive.set(0x6060f)
+              corner1.material.emissive.set(0x6060f)
+              corner3.material.emissive.set(0x6060f)
+
+              drawline1.material.color.set(Walnut)
+              drawline2.material.color.set(Walnut)
+              sideinner1.material.color.set(Walnut)
+              sideinner2.material.color.set(Walnut)
+
+              drawline1.position.set(0.02, 0, 2.01)
+              drawline2.position.set(0.02, 0, 0.98)
+              sideinner1.position.set(2, 0, 2.02)
+              sideinner2.position.set(2, 0, 0.98)
+
+              window1.scale.set(2, 1, 1);
+              windowtop1.scale.set(2, 1, 1)
+              corner1.scale.set(2, 1, 1)
+              corner3.scale.set(2, 1, 1)
+
+              window1.position.z = 2;
+              windowtop1.position.z = 2;
+              corner1.position.z = 1;
+              corner3.position.z = 2;
+
             } else {
-              window1.material.color.set(White);
-              windowtop1.material.color.set(White);
-              corner1.material.color.set(White)
-              corner3.material.color.set(White)
+
+
+              drawline1.position.set(0, 0, 0)
+              drawline2.position.set(0, 0, -1.02)
+              sideinner1.position.set(1.02, 0, 0.02)
+              sideinner2.position.set(1.02, 0, -1.02)
+
+              window1.scale.set(1, 1, 1);
+              windowtop1.scale.set(1, 1, 1)
+              corner1.scale.set(1, 1, 1)
+              corner3.scale.set(1, 1, 1)
+              window1.position.z = 0;
+              windowtop1.position.z = 0;
+              corner1.position.z = -1;
+              corner3.position.z = 0;
+              drawline1
+
+              //Practices for future Reference
+              window1.material.emissive.set(Black)
+              windowtop1.material.emissive.set(Black)
+              corner1.material.emissive.set(Black)
+              corner3.material.emissive.set(Black)
+
+              // window1.material.color.set(Walnut);
+              // windowtop1.material.color.set(Walnut);
+              // corner1.material.color.set(Walnut)
+              // corner3.material.color.set(Walnut)
             }
             if (intersects[0].object.position == window3.position || intersects[0].object.position == windowtop2.position) {
               console.log("Window3 is clicking")
-              window3.material.color.set(MediumBlue)
-              windowtop2.material.color.set(MediumBlue)
-              corner6.material.color.set(MediumBlue)
-              corner8.material.color.set(MediumBlue)
+              // window3.material.color.set(MediumBlue)
+              // windowtop2.material.color.set(MediumBlue)
+              // corner6.material.color.set(MediumBlue)
+              // corner8.material.color.set(MediumBlue)
+
+              window3.scale.set(2, 1, 1);
+              windowtop2.scale.set(2, 1, 1)
+              corner6.scale.set(2, 1, 1)
+              corner8.scale.set(2, 1, 1)
+
+              window3.position.z = 2;
+              windowtop2.position.z = 2;
+              corner6.position.z = 2;
+              window3.position.x = 9;
+              windowtop2.position.x = 9;
+              corner8.position.z = 1;
             } else {
-              window3.material.color.set(White)
-              windowtop2.material.color.set(White)
-              corner6.material.color.set(White)
-              corner8.material.color.set(White)
+              // window3.material.color.set(Walnut)
+              // windowtop2.material.color.set(Walnut)
+              // corner6.material.color.set(Walnut)
+              // corner8.material.color.set(Walnut)
+
+              window3.scale.set(1, 1, 1);
+              windowtop2.scale.set(1, 1, 1)
+              corner6.scale.set(1, 1, 1)
+              corner8.scale.set(1, 1, 1)
+
+              window3.position.x = 10;
+              windowtop2.position.x = 10;
+              window3.position.z = 0;
+              windowtop2.position.z = 0;
+              corner6.position.z = 0;
+              corner8.position.z = -1;
             }
             if (intersects[0].object.position == window4.position) {
-              console.log("Window4 is clicking")
-              window4.material.color.set(MediumBlue)
-              corner5.material.color.set(MediumBlue)
-              corner2.material.color.set(MediumBlue)
+              console.log("Window4 is clicking");
+              window4.scale.set(1, 2, 1);
+              corner2.scale.set(1, 2, 1)
+              corner5.scale.set(1, 2, 1)
+
+              window4.position.y = 0;
+              window4.position.z = 2;
+              corner2.position.z = 2;
+              corner5.position.z = 3;
+
             } else {
-              window4.material.color.set(White)
-              corner5.material.color.set(White)
-              corner2.material.color.set(White)
+
+              window4.position.y = -1;
+              window4.position.z = -1;
+              corner2.position.z = -1;
+              corner5.position.z = 0;
+
+              window4.scale.set(1, 1, 1);
+              corner2.scale.set(1, 1, 1)
+              corner5.scale.set(1, 1, 1)
             }
             if (intersects[0].object.position == windowtop3.position) {
               console.log("WindowTop3 is clicking")
-              windowtop3.material.color.set(MediumBlue)
-              corner4.material.color.set(MediumBlue)
-              corner7.material.color.set(MediumBlue)
+
+              windowtop3.scale.set(1, 2, 1);
+              corner4.scale.set(1, 2, 1)
+              corner7.scale.set(1, 2, 1)
+
+              windowtop3.position.z = 1;
+              corner4.position.z = 2;
+              corner7.position.z = 1;
             } else {
-              windowtop3.material.color.set(White)
-              corner4.material.color.set(White)
-              corner7.material.color.set(White)
+
+              windowtop3.scale.set(1, 1, 1);
+              corner4.scale.set(1, 1, 1)
+              corner7.scale.set(1, 1, 1)
+
+              windowtop3.position.z = -1;
+              corner4.position.z = 0;
+              corner7.position.z = -1;
             }
+
             if (intersects[0].object.position == window2.position) {
               console.log("Window2 is clicking")
-              window2.material.color.set(MediumBlue)
+
+              window2.scale.set(1, 2, 1);
+              window2.position.z = 2;
+              window2.position.y = 10.5;
+
             } else {
-              window2.material.color.set(White)
+
+              window2.scale.set(1, 1, 1);
+              window2.position.z = -1;
+              window2.position.y = 10;
+
             }
             if (intersects[0].object.position == framesashleft.position || intersects[0].object.position == framesashbot.position || intersects[0].object.position == framesashtop.position || intersects[0].object.position == framesashright.position) {
               console.log("frame left selected")
@@ -1172,10 +1456,10 @@ export class RectangleComponent implements OnInit, AfterViewInit {
               framesashbot.material.color.set(Blue);
 
             } else {
-              framesashleft.material.color.set(White);
-              framesashright.material.color.set(White);
-              framesashtop.material.color.set(White);
-              framesashbot.material.color.set(White);
+              framesashleft.material.color.set(Walnut);
+              framesashright.material.color.set(Walnut);
+              framesashtop.material.color.set(Walnut);
+              framesashbot.material.color.set(Walnut);
             }
             if (intersects[0].object.position == framesashleft2.position || intersects[0].object.position == framesashbot1.position || intersects[0].object.position == framesashtop1.position || intersects[0].object.position == framesashright2.position) {
               console.log("frame left selected")
@@ -1184,17 +1468,15 @@ export class RectangleComponent implements OnInit, AfterViewInit {
               framesashtop1.material.color.set(Blue);
               framesashbot1.material.color.set(Blue);
             } else {
-              framesashleft2.material.color.set(White);
-              framesashright2.material.color.set(White);
-              framesashtop1.material.color.set(White);
-              framesashbot1.material.color.set(White);
+              framesashleft2.material.color.set(Walnut);
+              framesashright2.material.color.set(Walnut);
+              framesashtop1.material.color.set(Walnut);
+              framesashbot1.material.color.set(Walnut);
             }
           }
         })
-
+        //#endregion
       })
-
-
     })
 
     // this.renderer.render(this.scene, this.camera)
@@ -1533,8 +1815,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     }
 
     //#endregion
-
-
 
     //#region Camera
     let aspectRatio = this.getAspectRatio()
@@ -2022,7 +2302,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // const times = [2, 10];
     // const axis = "x";
     // let tweens = this.tween();
-    
+
 
 
     // const labelRenderer = new CSS2DRenderer()
@@ -2031,11 +2311,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     // labelRenderer.domElement.style.top = '0px'
     // labelRenderer.domElement.style.pointerEvents = 'none'
     // document.body.appendChild(labelRenderer.domElement)
-    
-
-
- 
-
 
 
     this.camera.updateProjectionMatrix();
@@ -2068,11 +2343,11 @@ export class RectangleComponent implements OnInit, AfterViewInit {
 
 
       component.renderer.render(component.scene, component.camera);
-      
+
     }());
 
 
-  
+
 
     //#region 2D , 3D buttons and Sliding button
     var ThreeDim = document.getElementById("threeDimension")
@@ -2089,38 +2364,37 @@ export class RectangleComponent implements OnInit, AfterViewInit {
       control.enableRotate = false;
     })
     //#endregion
-// let ctrlDown = false;
-// let line : THREE.Line;
-// let drawline = false;
-// const measurementLabels: { [key: number]: CSS2DObject } = {}
-//     window.addEventListener('keydown', event => {
-//       if(event.key ==='control'){
-//         ctrlDown = true;
-//         control.enabled = false;
-//         this.renderer.domElement.style.cursor = 'crosshair'
-//       }
-//     })
-//     window.addEventListener('keyup', event=> {
-//       if(event.key === 'control'){
-//         control.enabled = true;
-//         this.renderer.domElement.style.cursor = 'pointer';
-//         if(drawline){
-//           this.scene.remove(line);
-//           // this.scene.remove(measurementLabels[lineId])
-//           drawline = false;
-//         }
-//       }
-//     })
-  
+    // let ctrlDown = false;
+    // let line : THREE.Line;
+    // let drawline = false;
+    // const measurementLabels: { [key: number]: CSS2DObject } = {}
+    //     window.addEventListener('keydown', event => {
+    //       if(event.key ==='control'){
+    //         ctrlDown = true;
+    //         control.enabled = false;
+    //         this.renderer.domElement.style.cursor = 'crosshair'
+    //       }
+    //     })
+    //     window.addEventListener('keyup', event=> {
+    //       if(event.key === 'control'){
+    //         control.enabled = true;
+    //         this.renderer.domElement.style.cursor = 'pointer';
+    //         if(drawline){
+    //           this.scene.remove(line);
+    //           // this.scene.remove(measurementLabels[lineId])
+    //           drawline = false;
+    //         }
+    //       }
+    //     })
 
-}
+
+  }
 
 
   ngAfterViewInit(): void {
     this.createScene();
     this.startRenderingLoop();
     // this.tween();
-
 
   }
 
@@ -2134,7 +2408,6 @@ export class RectangleComponent implements OnInit, AfterViewInit {
   }
 
 
- 
   //#region Textures
   Textures1() {
     var w1 = this.scene.getObjectByName("w1")
@@ -2162,8 +2435,8 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture3.loader();
     })
-    console.log("Tex-1 clicked")
-    // alert("Texture 1 is load")
+    console.log("Tex-1 is clicked");
+
 
   }
 
@@ -2187,7 +2460,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
 
     var pw = this.scene.getObjectByName("PW1")
 
-    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8,pw]
+    const objectscene: any[] = [w1, w2, w3, w4, w5, w6, w7, cor1, cor2, cor3, cor4, cor5, cor6, cor7, cor8, pw]
 
     objectscene.forEach(object => {
       object.material = texture4.loader();
@@ -2332,7 +2605,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture9.loader();
     })
-    console.log("Tex-6 clicked")
+    console.log("Tex-7 clicked")
 
   }
 
@@ -2360,7 +2633,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture10.loader();
     })
-    console.log("Tex-6 clicked")
+    console.log("Tex-8 clicked")
 
   }
 
@@ -2388,7 +2661,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture11.loader();
     })
-    console.log("Tex-6 clicked")
+    console.log("Tex-9 clicked")
 
   }
 
@@ -2416,9 +2689,10 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture12.loader();
     })
-    console.log("Tex-6 clicked")
+    console.log("Tex-10 clicked")
 
   }
+
   TexturesOff() {
     var w1 = this.scene.getObjectByName("w1")
     var w2 = this.scene.getObjectByName("w2")
@@ -2443,7 +2717,7 @@ export class RectangleComponent implements OnInit, AfterViewInit {
     objectscene.forEach(object => {
       object.material = texture.loader();
     })
-    console.log("Tex-6 clicked")
+    console.log("Tex-Off clicked")
 
   }
   //#endregion

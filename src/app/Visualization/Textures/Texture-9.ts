@@ -34,7 +34,6 @@ export class texture11 {
         });
 
         material.map = texture;
-        material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.offset.set(0.1, 0.9);
         texture.repeat.set(0.1, 0.1);

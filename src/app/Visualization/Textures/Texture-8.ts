@@ -1,6 +1,6 @@
 import { Aqua, LightBrown, Red, Walnut, White, Wood1 } from "src/app/Constants/ColorConstants";
 import * as THREE from "three";
-import { Loader } from "three";
+
 import { texture } from "./Texture1";
 
 export class texture10 {
@@ -48,7 +48,7 @@ export class texture10 {
                 tex.needsUpdate = true;
             });
         // const texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic14.jpg');
-        var texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic32.jpg')
+        var texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic41.jpg')
         const material = new THREE.MeshStandardMaterial({
             //  color: LightBrown,
             color: Walnut,
@@ -63,14 +63,13 @@ export class texture10 {
             // map: new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic2.jpg')
         });
         material.map = texture;
-        material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.offset.set(0.2, 0.9);
         texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
         
         // texture.needsUpdate = true;
-        material.bumpMap = bumpTexture;
+        // material.bumpMap = bumpTexture;
         // material.normalMap = normalTexture;
         // material.normalScale.set(50, 50)
         return material;

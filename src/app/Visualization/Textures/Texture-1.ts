@@ -22,7 +22,7 @@ export class texture3 {
                 tex.needsUpdate = true;
             });
 
-        var texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpicnew2.png')
+        var texture = new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic40copy.jpg')
         // var normaltexture = loader.load('https://i.pinimg.com/originals/60/37/96/603796cef1e18a412c5f8447e95b6fe9.jpg')
         const material = new THREE.MeshStandardMaterial({
             //  color: DarkBrown,
@@ -34,10 +34,10 @@ export class texture3 {
         });
         material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.offset.set(0, 0.5);
+        texture.offset.set(0.5, 0.9);
         texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
-        texture.needsUpdate = true;
+        // texture.needsUpdate = true;
         // material.bumpMap = bumpTexture;
         // material.normalMap = normalTexture;
         // material.normalScale.set(50, 50)

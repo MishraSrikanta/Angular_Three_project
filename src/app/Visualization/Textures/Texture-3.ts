@@ -34,10 +34,10 @@ export class texture5 {
         });
         material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-        texture.offset.set(0, 0.9);
+        texture.offset.set(1, 0.9);
         texture.repeat.set(0.1, 0.1);
         texture.anisotropy = 10;
-        texture.needsUpdate = true;
+        // texture.needsUpdate = true;
         // material.bumpMap = bumpTexture;
         // material.normalMap = normalTexture;
         // material.normalScale.set(5, 5)

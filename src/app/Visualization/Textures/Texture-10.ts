@@ -35,7 +35,6 @@ export class texture12 {
             // map: new THREE.TextureLoader().load('../assets/MaterialMap/Woodpic15.jpg')
         });
         material.map = texture;
-        material.map = texture;
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.offset.set(0.3, 0.9);
         texture.repeat.set(0.1, 0.1);
